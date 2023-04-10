@@ -11,5 +11,5 @@ KeyTest is a small test application for the Haiku operating system. It displays 
 ### Build Instructions
 
 ```
-make
+jam
 ```

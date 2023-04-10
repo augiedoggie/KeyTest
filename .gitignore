@@ -1,2 +1,12 @@
-objects.*
-KeyTest
+*~
+compile_commands.json
+.dir-locals.el
+.ignore
+.cache
+.ccls-cache
+.clang-format
+GPATH
+GRTAGS
+GTAGS
+ID
+obj.*
