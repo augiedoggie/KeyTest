@@ -5,8 +5,12 @@
 ## Intel and PowerPC builds of BeOS and Haiku.
 
 ## Application Specific Settings ---------------------------------------------
+
+# use g++ to compile and link so that we automatically get libstdc++
 C++ = g++ ;
 LINK = $(C++) ;
+
+# override MKDIR to work around a bug in jamfile-engine
 MKDIR = mkdir -p ;
 
 # Specify the name of the binary
@@ -40,6 +44,9 @@ RSRCS =  ;
 
 # Additionally specify the path of rdef files to compile and add to resources
 RDEFS = KeyTest.rdef ;
+
+# Make Jamfile-engine remove the generated resource file
+Clean clean : $(NAME).rsrc ;
 
 # Specify additional libraries to link against
 #	There are two acceptable forms of library specifications
