@@ -10,6 +10,9 @@ KeyTest is a small test application for the Haiku operating system. It displays 
 
 ### Build Instructions
 
+You must have the `jamfile_engine` package installed in order to build.
+
 ```
-jam
+~> cd KeyTest
+~/KeyTest> jam
 ```
