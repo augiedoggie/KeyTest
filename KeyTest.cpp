@@ -14,14 +14,14 @@ public:
 		:
 		BColumnListView("Key Output", 0, B_FANCY_BORDER, true)
 	{
-		AddColumn(new(std::nothrow) BStringColumn("Event", 50, 40, 100, B_TRUNCATE_MIDDLE), 0);
-		AddColumn(new(std::nothrow) BIntegerColumn("Key", 40, 40, 100), 1);
-		AddColumn(new(std::nothrow) BStringColumn("Modifiers", 150, 40, 220, B_TRUNCATE_MIDDLE), 2);
-		AddColumn(new(std::nothrow) BIntegerColumn("States", 50, 40, 100), 3);
-		AddColumn(new(std::nothrow) BIntegerColumn("Byte", 60, 40, 100), 4);
-		AddColumn(new(std::nothrow) BStringColumn("Bytes", 80, 40, 200, B_TRUNCATE_MIDDLE), 5);
-		AddColumn(new(std::nothrow) BIntegerColumn("Raw", 70, 40, 200), 6);
-		AddColumn(new(std::nothrow) BIntegerColumn("Repeat", 70, 40, 200), 7);
+		AddColumn(new (std::nothrow) BStringColumn("Event", 50, 40, 100, B_TRUNCATE_MIDDLE), 0);
+		AddColumn(new (std::nothrow) BIntegerColumn("Key", 40, 40, 100), 1);
+		AddColumn(new (std::nothrow) BStringColumn("Modifiers", 150, 40, 220, B_TRUNCATE_MIDDLE), 2);
+		AddColumn(new (std::nothrow) BIntegerColumn("States", 50, 40, 100), 3);
+		AddColumn(new (std::nothrow) BIntegerColumn("Byte", 60, 40, 100), 4);
+		AddColumn(new (std::nothrow) BStringColumn("Bytes", 80, 40, 200, B_TRUNCATE_MIDDLE), 5);
+		AddColumn(new (std::nothrow) BIntegerColumn("Raw", 70, 40, 200), 6);
+		AddColumn(new (std::nothrow) BIntegerColumn("Repeat", 70, 40, 200), 7);
 		SetSortingEnabled(false);
 		SetSelectionMode(B_SINGLE_SELECTION_LIST);
 	}
@@ -99,7 +99,7 @@ private:
 				break;
 			case '_UKD':
 				// unknown key down
-				eventStr  = "?\xE2\x86\x93";
+				eventStr = "?\xE2\x86\x93";
 				break;
 		};
 
@@ -141,17 +141,17 @@ private:
 		if (modifiers & B_MENU_KEY)
 			modStr << (modStr.Length() > 0 ? "|Menu" : "Menu");
 
-		BRow* row = new(std::nothrow) BRow();
-		row->SetField(new(std::nothrow) BStringField(eventStr), 0);
-		row->SetField(new(std::nothrow) BIntegerField(message->FindInt32("key")), 1);
-		row->SetField(new(std::nothrow) BStringField(modStr), 2);
-		row->SetField(new(std::nothrow) BIntegerField(message->GetUInt8("states", 0)), 3);
-		row->SetField(new(std::nothrow) BIntegerField(message->FindInt8("byte")), 4);
-		row->SetField(new(std::nothrow) BStringField(message->FindString("bytes")), 5);
-		row->SetField(new(std::nothrow) BIntegerField(message->FindInt32("raw_char")), 6);
+		BRow* row = new (std::nothrow) BRow();
+		row->SetField(new (std::nothrow) BStringField(eventStr), 0);
+		row->SetField(new (std::nothrow) BIntegerField(message->FindInt32("key")), 1);
+		row->SetField(new (std::nothrow) BStringField(modStr), 2);
+		row->SetField(new (std::nothrow) BIntegerField(message->GetUInt8("states", 0)), 3);
+		row->SetField(new (std::nothrow) BIntegerField(message->FindInt8("byte")), 4);
+		row->SetField(new (std::nothrow) BStringField(message->FindString("bytes")), 5);
+		row->SetField(new (std::nothrow) BIntegerField(message->FindInt32("raw_char")), 6);
 		int32 repeat = message->GetInt32("be:key_repeat", -1);
 		if (repeat != -1)
-			row->SetField(new(std::nothrow) BIntegerField(repeat), 7);
+			row->SetField(new (std::nothrow) BIntegerField(repeat), 7);
 
 		AddRow(row);
 		ScrollTo(row);
@@ -165,11 +165,11 @@ public:
 		:
 		BApplication("application/x-vnd.cpr.KeyTest")
 	{
-		BWindow* win = new(std::nothrow) BWindow(BRect(0, 0, 650, 500), "KeyTest", B_TITLED_WINDOW,
-													B_ASYNCHRONOUS_CONTROLS | B_QUIT_ON_WINDOW_CLOSE | B_AUTO_UPDATE_SIZE_LIMITS);
+		BWindow* win = new (std::nothrow) BWindow(BRect(0, 0, 650, 500), "KeyTest", B_TITLED_WINDOW,
+			B_ASYNCHRONOUS_CONTROLS | B_QUIT_ON_WINDOW_CLOSE | B_AUTO_UPDATE_SIZE_LIMITS);
 
 		BLayoutBuilder::Group<>(win, B_VERTICAL, 0)
-			.Add(new(std::nothrow) KeyListView());
+			.Add(new (std::nothrow) KeyListView());
 
 		win->Lock();
 		win->CenterOnScreen();
@@ -179,7 +179,8 @@ public:
 };
 
 
-int main(int argc, char** argv)
+int
+main(int /*argc*/, char** /*argv*/)
 {
 	KeyTestApp app;
 	app.Run();
